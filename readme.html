@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bootstrap Dropdowns for Select element - bootstrap-ddselect.js</title>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+    <style>
+        hr {
+            margin: 40px 0 39px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>bootstrap-ddselect.js<br />
+                <small>Transform HTML Select elements to Bootstrap Split Button Dropdowns</small></h1>
+        </div>
+
+        <div class="">
+            <div class="">
+            </div>
+
+            <div class="">
+                <h2>About</h2>
+                <p>This jQuery plugin extends the <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> front-end framework to transform <code>&lt;select&gt;</code> elements to split button dropdowns (or dropups).</p>
+                <dl>
+                    <dt>Version</dt>
+                    <dd>1.0</dd>
+                    <dt>Author</dt>
+                    <dd>Martin Eriksson</dd>
+                </dl>
+
+                <hr />
+
+                <h2>Features</h2>
+                <ul>
+                    <li>Supports the bootstrap default button styles.</li>
+                    <li>Supports option groups.</li>
+                </ul>
+
+                <hr />
+
+                <h2>Examples</h2>
+
+                <p>A basic <code>&lt;select&gt;</code> element.</p>
+                <div class="well">
+                    <select id="simple-example" name="simple">
+                        <option value="Pizza">Pizza</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Sandwich">Sandwich</option>
+                        <option value="Sushi">Sushi</option>
+                    </select>
+                </div>
+
+                <p>A <code>&lt;select&gt;</code> element with <code>&lt;optgroup&gt;</code> children and a single orphan <code>&lt;option&gt;</code> element.</p>
+                <div class="well">
+                    <select>
+                        <optgroup label="Fruits">
+                            <option value="Apple">Apple</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Pear">Pear</option>
+                        </optgroup>
+                        <optgroup label="Vegetables">
+                            <option value="Carrot">Carrot</option>
+                            <option value="Cucumber">Cucumber</option>
+                            <option value="Pumpkin">Pumpkin</option>
+                            <option value="Tomatoe">Tomatoe</option>
+                        </optgroup>
+                        <option value="Beef">Beef</option>
+                    </select>
+                </div>
+
+                <p>A disabled <code>&lt;select&gt;</code> element.</p>
+                <div class="well">
+                    <select disabled="disabled">
+                        <option value="Pizza">Pizza</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Sandwich">Sandwich</option>
+                        <option value="Sushi">Sushi</option>
+                    </select>
+                </div>
+
+                <p>A <code>&lt;select&gt;</code> element with a disabled <code>&lt;option&gt;</code>.</p>
+                <div class="well">
+                    <select>
+                        <option value="Pizza">Pizza</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Sandwich" disabled="disabled">Sandwich</option>
+                        <option value="Sushi">Sushi</option>
+                    </select>
+                </div>
+
+                <p>Example of using <code>btn-success</code> for button style.</p>
+                <div class="well">
+                    <select id="button-style">
+                        <option value="Pizza">Pizza</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Sandwich" disabled="disabled">Sandwich</option>
+                        <option value="Sushi">Sushi</option>
+                    </select>
+                </div>
+
+                <p>Example of using <code>.btn-mini</code> bootstrap button style.</p>
+                <div class="well">
+                    <select id="button-size">
+                        <option value="Pizza">Pizza</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Sandwich" disabled="disabled">Sandwich</option>
+                        <option value="Sushi">Sushi</option>
+                    </select>
+                </div>
+
+                <p>Example a dropup</p>
+                <div class="well">
+                    <select id="dropup">
+                        <option value="Pizza">Pizza</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Sandwich" disabled="disabled">Sandwich</option>
+                        <option value="Sushi">Sushi</option>
+                    </select>
+                </div>
+
+                <hr />
+
+                <h2>Usage</h2>
+
+                <h3>Via JavaScript</h3>
+                <p>Call the dropdowns via JavaScript:</p>
+                <pre>$('select').ddselect();</pre>
+
+                <h3>Options</h3>
+                <p>Options can be passed via JavaScript.</p>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">Name</th>
+                            <th style="width: 100px;">type</th>
+                            <th style="width: 50px;">default</th>
+                            <th>description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>buttonClass</td>
+                            <td>string</td>
+                            <td></td>
+                            <td>Use any of the bootstrap button style class names to style your dropdown. 
+                                Class names are <code>.btn-primary</code>, 
+                                <code>.btn-info</code>, <code>.btn-success</code>, <code>.btn-warning</code>, 
+                                <code>.btn-danger</code> and <code>.btn-inverse</code>, 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>sizeClass</td>
+                            <td>string</td>
+                            <td></td>
+                            <td>Use any of the bootstrap button size class names to size your dropdown.
+                                Class names are <code>.btn-mini</code>, <code>.btn-small</code> and <code>.btn-large</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>dropup</td>
+                            <td>bool</td>
+                            <td>false</td>
+                            <td>Set to <code>true</code> to transform the dropdown into a dropup.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Methods</h3>
+                <h4>$().ddselect('refresh')</h4>
+                <p>Refreshes the dropdown completely. Use this if you have changed anything but the selected value of the original <code>&lt;select&gt;</code> element to update the dropdown.</p>
+                <h4>$().ddselect('show')</h4>
+                <p>Show the dropdown.</p>
+                <h4>$().ddselect('hide')</h4>
+                <p>Hide the dropdown.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap-ddselect.js"></script>
+
+    <script>
+        $('select').not('#button-style').not('#button-size').not('#dropup').ddselect();
+        $('select#button-style').ddselect({
+            buttonClass: 'btn-success'
+        });
+        $('select#button-size').ddselect({
+            sizeClass: 'btn-mini'
+        });
+        $('select#dropup').ddselect({
+            dropup: true
+        });
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $('.result').text($(this).serialize());
+        });
+    </script>
+</body>
+</html>
