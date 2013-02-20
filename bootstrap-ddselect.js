@@ -1,6 +1,6 @@
 ﻿/**
  * bootstrap-ddselect.js
- * v1.0
+ * v1.0.1
  *
  * By Martin Eriksson
  */
@@ -22,6 +22,9 @@
 
             // Apply our options
             //
+			if (options.parentClass) {
+				this.$btnGroup.addClass(options.parentClass);
+			}
             if (options.buttonClass) {
                 this.$btnGroup.find('.btn').addClass(options.buttonClass);
             }
@@ -58,7 +61,7 @@
 
             // Set the text of the DropDown as of the currently selected option text
             //
-            this.$btnGroup.find('.btn').first().text(currentSelected.text());
+            this.$btnGroup.find('.btn .text').text(currentSelected.text());
 
             // Check if the Select element is disabled
             //
@@ -139,11 +142,11 @@
         };
 
         DDSelect.template = '<div class="btn-group">' +
-            '<button class="btn" data-toggle="dropdown"></button>' +
+            '<button class="btn" data-toggle="dropdown"><span class="text" /></button>' +
             '<button class="btn dropdown-toggle" data-toggle="dropdown">' +
-            '<span class="caret"></span>' +
+            '<span class="caret" />' +
             '</button>' +
-            '<ul class="dropdown-menu"></ul>' +
+            '<ul class="dropdown-menu" />' +
             '</div>';
 
         return DDSelect;
@@ -173,21 +176,22 @@
         // Return the jQuery chain
         //
         return this.each(function () {
+			var ddSelect = $(this).data(dataKey),
+				api = null;
+
+			if (ddSelect) {
+				api = ddSelect.getApi();
+				method = 'refresh';
+			}
+			
             if (method) {
-                var ddSelect = $(this).data(dataKey),
-                    api = null;
-
-                if (ddSelect) {
-                    api = ddSelect.getApi();
-
-                    if (api[method]) {
-                        api[method]();
-                    } else {
-                        $.error('Method ' + method + ' does not exist on jQuery.dropdownselect');
-                    }
-                }
+				if (api[method]) {
+					api[method]();
+				} else {
+					$.error('Method ' + method + ' does not exist on jQuery.dropdownselect');
+				}
             } else {
-                $(this).data(dataKey, new DDSelect(this, options));
+				$(this).data(dataKey, new DDSelect(this, options));
             }
         });
     };
@@ -196,6 +200,7 @@
     //
     $.fn.ddselect.defaultOptions = {
         dropup: false,
+		parentClass: 'ddselect',
         buttonClass: '',
         sizeClass: ''
     };
